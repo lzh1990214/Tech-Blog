@@ -8,7 +8,7 @@ router.get('/', async (req, res) => {
             include: [{ model: User }],
         });
 
-        // const user = await User.findOne({ where: { id: req.session.user_id } });
+        const user = await User.findOne({ where: { id: req.session.user_id } });
         const userData = user.get({ plain: true });
 
         const posts = postsData.map((post) => post.get({ plain: true }));
