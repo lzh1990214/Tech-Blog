@@ -2,18 +2,20 @@ const router = require('express').Router();
 const Posts = require('../../models/Posts');
 const User = require('../../models/User');
 
+// find all posts of the current user: http://localhost:3001/api/posts
 router.get('/', async (req, res) => {
     try {
         const postsData = await Posts.findAll({
+            where: { author: req.session.user_id },
             include: [{ model: User }],
         });
 
         const user = await User.findOne({ where: { id: req.session.user_id } });
         const userData = user.get({ plain: true });
-
+        console.log(userData);
         const posts = postsData.map((post) => post.get({ plain: true }));
-        // console.log(posts);
-        // res.status(200).json(posts);
+        console.log(posts);
+
         res.render('dashboard', {
             posts,
             userData,
@@ -25,6 +27,7 @@ router.get('/', async (req, res) => {
     }
 });
 
+// http://localhost:3001/api/posts/1
 router.get('/:id', async (req, res) => {
     try {
         const postData = await Posts.findByPk(req.params.id);
@@ -40,7 +43,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-router.post('/addPost', async (req, res) => {
+router.post('/addpost', async (req, res) => {
     try {
 
         const user = await User.findOne({ where: { id: req.session.user_id } });
@@ -51,12 +54,14 @@ router.post('/addPost', async (req, res) => {
             post_title: req.body.post_title,
             post_description: req.body.post_description
         });
+        console.log(post);
 
         const postData = await Posts.findAll({
             include: [{ model: User }],
         });
 
         const posts = postData.map((post) => post.get({ plain: true }));
+        console.log(posts);
 
         res.render('dashboard', {
             posts,
