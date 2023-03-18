@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const Posts = require('../../models/Posts');
 const User = require('../../models/User');
+const Comments = require('../../models/Comments');
+const withAuth = require('../../utils/auth');
+
 
 // find all posts of the current user: http://localhost:3001/api/posts
 router.get('/', async (req, res) => {
@@ -9,6 +12,10 @@ router.get('/', async (req, res) => {
             where: { author: req.session.user_id },
             include: [{ model: User }],
         });
+
+        // const commentsData = await Comment.findAll({
+        //     where: 
+        // })
 
         const user = await User.findOne({ where: { id: req.session.user_id } });
         const userData = user.get({ plain: true });
@@ -60,37 +67,6 @@ router.post('/addpost', async (req, res) => {
     }
 });
 
-// router.post('/currentpost/:id', async (req, res) => {
-//     try {
-//         const currentUser = req.session.user_id;
-
-//         const userData = await User.findOne({ where: { id: currentUser } });
-//         if (!userData) {
-//             res
-//                 .status(400)
-//                 .json({ message: 'Incorrect email or password, please try again' });
-//             return;
-//         }
-
-//         const user = userData.get({ plain: true });
-
-//         const post = await Posts.update(
-//             {
-//                 author: currentUser,
-//                 post_title: user.first_name,
-//                 responder_last_name: user.last_name,
-//             },
-//             {
-//                 where: {
-//                     id: req.params.id,
-//                 },
-//             }
-//         );
-//         res.status(200).json(user);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
 
 router.put('/:id', async (req, res) => {
     try {
@@ -131,5 +107,30 @@ router.delete('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+// http://localhost:3001/api/posts/addcomment
+router.post('/addcomment', withAuth, async (req, res) => {
+    try {
+        // console.log(req);
+        const user = await User.findOne({ where: { id: req.session.user_id } });
+        const userData = user.get({ plain: true });
+        const comment = await Comments.create({
+            commenter: req.session.user_id,
+            comment_description: req.body.comment_description,
+            commenter_first: userData.first_name,
+            commenter_last: userData.last_name,
+            post_id: req.body.post_id
+        });
+
+        console.log(comment);
+        res.render('homepage', {
+            comment,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
+
 
 module.exports = router;

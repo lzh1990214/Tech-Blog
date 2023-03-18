@@ -29,10 +29,26 @@
                             {{post.user.last_name}} on
                             {{format_date post.date_created}}</h6>
                         <p class="card-text">{{post.post_description}}</p>
+                        {{!-- Loop through comments array of each post to extract description and commenter name --}}
+                        <h6 class="card-subtitle mb-2 text-muted">Comments</h6>
+                        {{#each post.comments as |comment| }}
+                        <p>{{comment.commenter_first}} {{comment.commenter_last}} <span>on {{format_date
+                                comment.date_created}} wrote:</span></p>
+                        <p>{{comment.comment_description}}</p>
+                        {{/each}}
+
+                        <form class="newCommentForm">
+                            <div class="mb-3">
+                                <label for="commentBox{{post.id}}" class="form-label">Leave a comment</label>
+                                <textarea class="form-control" id="commentBox{{post.id}}" rows="3"></textarea>
+                            </div>
+                        </form>
+
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-primary cmSubmitBtn" data-id="{{post.id}}"
+                            id="cmSubmitBtn{{post.id}}" onclick="window.location.href='/';">Submit</button>
                     </div>
                 </div>
             </div>

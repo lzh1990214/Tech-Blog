@@ -22,6 +22,22 @@ Comments.init(
                 key: 'id',
             },
         },
+        commenter_first: {
+            type: DataTypes.STRING,
+            // references: {
+            //     model: 'user',
+            //     key: 'first_name',
+            // },
+            allowNull: false,
+        },
+        commenter_last: {
+            type: DataTypes.STRING,
+            // references: {
+            //     model: 'user',
+            //     key: 'last_name',
+            // },
+            allowNull: false,
+        },
         post_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -30,6 +46,11 @@ Comments.init(
                 key: 'id',
             },
         },
+        date_created: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+        }
     },
     {
         sequelize,
