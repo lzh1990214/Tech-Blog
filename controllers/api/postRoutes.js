@@ -109,7 +109,7 @@ router.delete('/:id', async (req, res) => {
 });
 
 // http://localhost:3001/api/posts/addcomment
-router.post('/addcomment', async (req, res) => {
+router.post('/addcomment', withAuth, async (req, res) => {
     try {
         // console.log(req);
         const user = await User.findOne({ where: { id: req.session.user_id } });
