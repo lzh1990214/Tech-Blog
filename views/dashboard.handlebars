@@ -15,6 +15,8 @@
                         {{format_date post.date_created}}</h6>
                     <p class="card-text">{{post.post_description}}</p>
                     <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-{{post.id}}">Edit</a>
+                    <a class="btn btn-primary deleteBtn" data-id="{{post.id}}">Delete</a>
+
                 </div>
             </div>
 
