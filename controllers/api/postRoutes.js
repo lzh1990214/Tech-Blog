@@ -12,9 +12,9 @@ router.get('/', async (req, res) => {
 
         const user = await User.findOne({ where: { id: req.session.user_id } });
         const userData = user.get({ plain: true });
-        console.log(userData);
+        // console.log(userData);
         const posts = postsData.map((post) => post.get({ plain: true }));
-        console.log(posts);
+        // console.log(posts);
 
         res.render('dashboard', {
             posts,
@@ -43,30 +43,18 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+// http://localhost:3001/api/posts/addpost
 router.post('/addpost', async (req, res) => {
     try {
-
-        const user = await User.findOne({ where: { id: req.session.user_id } });
-        const userData = user.get({ plain: true });
-
+        // console.log(req);
+        // const user = await User.findOne({ where: { id: req.session.user_id } });
+        // const userData = user.get({ plain: true });
         const post = await Posts.create({
             author: req.session.user_id,
             post_title: req.body.post_title,
             post_description: req.body.post_description
         });
         console.log(post);
-
-        const postData = await Posts.findAll({
-            include: [{ model: User }],
-        });
-
-        const posts = postData.map((post) => post.get({ plain: true }));
-        console.log(posts);
-
-        res.render('dashboard', {
-            posts,
-            logged_in: req.session.logged_in
-        });
     } catch (err) {
         res.status(400).json(err);
     }

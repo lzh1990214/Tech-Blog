@@ -27,14 +27,6 @@ Posts.init(
         //         key: 'id',
         //     },
         // },
-        // responder_first_name: {
-        //     type: DataTypes.STRING,
-        //     allowNull: true,
-        // },
-        // responder_last_name: {
-        //     type: DataTypes.STRING,
-        //     allowNull: true,
-        // },
         post_title: {
             type: DataTypes.STRING,
             allowNull: true,
@@ -48,14 +40,6 @@ Posts.init(
             allowNull: false,
             defaultValue: DataTypes.NOW,
         }
-        // post_date: {
-        //     type: DataTypes.CHAR,
-        //     allowNull: false,
-        // },
-        // post_time: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false,
-        // }
         // comments_id: {
         //     type: DataTypes.INTEGER,
         //     allowNull: true,
@@ -63,23 +47,7 @@ Posts.init(
         //         model: 'comments',
         //         key: 'id',
         //     },
-        // },
-        // likes_id: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: true,
-        //     references: {
-        //         model: 'likes',
-        //         key: 'id',
-        //     },
-        // },
-        // user_id: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: true,
-        //     references: {
-        //         model: 'user',
-        //         key: 'id',
-        //     },
-        // },
+        // }
     },
     {
         sequelize,
