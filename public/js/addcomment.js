@@ -21,11 +21,12 @@ const commentFormHandler = async (event) => {
             });
 
             if (response.ok) {
-                // If successful, redirect the browser to the dashboard page
+                // If successful, redirect the browser to the home page
                 console.log(response);
                 document.location.replace('/');
             } else {
                 alert(response.statusText);
+                // document.location.replace('/login');
             }
         }
     };
