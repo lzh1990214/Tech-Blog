@@ -23,7 +23,10 @@ const postFormHandler = async (event) => {
             alert(response.statusText);
         }
     }
+    else {
+        alert("please fill out all required fields")
+    };
 };
 
-document.querySelector('#newPostForm').addEventListener('submit', postFormHandler);
+document.querySelector('#newPostSubmit').addEventListener('click', postFormHandler);
 

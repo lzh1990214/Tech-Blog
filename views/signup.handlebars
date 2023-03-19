@@ -3,27 +3,26 @@
         <form class="signup-form row">
             <div class="col-md-6">
                 <div class="inputs"> <label class="left">First Name*</label> <input class="form-control" type="text"
-                        id="firstName" placeholder="Enter your first name*"> </div>
+                        id="firstName" placeholder="Enter your first name*" required="required"> </div>
             </div>
             <div class="col-md-6">
                 <div class="inputs"> <label>Last Name*</label> <input class="form-control" type="text" id="lastName"
-                        placeholder="Enter your last name.*"> </div>
+                        placeholder="Enter your last name.*" required="required"> </div>
             </div>
             <div class="col-md-6">
                 <div class="inputs"> <label>Email Address*</label> <input class="form-control" type="text" id="email"
-                        placeholder="Enter your email address"> </div>
+                        placeholder="Enter your email address" required="required"> </div>
             </div>
             <div class="col-md-6">
                 <div class="inputs"> <label>Password*</label> <input class="form-control" type="password" id="password"
-                        placeholder="Enter your password"> </div>
+                        placeholder="Enter your password" required="required"> </div>
             </div>
             <br><br>
             <div class="col-md-12 mt-3 gap-2 d-flex justify-content-end row">
-                <button class="px-3 btn btn-sm btn-outline-primary">Cancel</button>
                 <button class="px-3 btn btn-sm btn-primary" type="submit">Save</button>
+                <button class="px-3 btn btn-sm btn-outline-primary" onclick="window.location.href='/';">Cancel</button>
             </div>
         </form>
     </div>
 </div>
 
-<script src="./js/signup.js"></script>

@@ -35,15 +35,12 @@
                     <a class="nav-link" id="dashboardBtn" href="/api/posts">Dashboard</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="logout" href="/user/logout">Logout</a>
+                    <a class="nav-link" id="logout" href="/">Logout</a>
                 </li>
                 {{else}}
                 <li class="nav-item">
                     <a class="nav-link" href="/">Home</a>
                 </li>
-                {{!-- <li class="nav-item">
-                    <a class="nav-link" href="#">Dashboard</a>
-                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link" href="/login">Login</a>
                 </li>
@@ -61,12 +58,16 @@
     {{{ body }}}
 
     {{#if logged_in}}
+
     <script src="/js/logout.js"></script>
     <script src="/js/addpost.js"></script>
     <script src="/js/editpost.js"></script>
     <script src="/js/addcomment.js"></script>
 
     {{/if}}
+
+    <script src="./js/login.js"></script>
+    <script src="./js/signup.js"></script>
 </body>
 
 </html>

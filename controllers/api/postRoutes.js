@@ -10,7 +10,12 @@ router.get('/', withAuth, async (req, res) => {
     try {
         const postsData = await Posts.findAll({
             where: { author: req.session.user_id },
-            include: [{ model: User }],
+            include: [
+                { model: User },
+                {
+                    model: Comments,
+                    attributes: ['comment_description', 'commenter', 'commenter_first', 'commenter_last', 'date_created'],
+                }],
         });
 
         const user = await User.findOne({ where: { id: req.session.user_id } });

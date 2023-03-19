@@ -22,34 +22,39 @@ const editPostFormHandler = async (event) => {
                 });
 
             if (response.ok) {
-                // If successful, redirect the browser to the dashboard page
-                document.location.replace('/api/posts');
+                console.log("updated the post successfully");
             } else {
                 alert(response.statusText);
             }
         }
+        else {
+            alert("please fill out all required fields")
+        };
     }
 };
 
 
 const delButtonHandler = async (event) => {
     event.preventDefault();
-
-    if (event.target.hasAttribute('data-id')) {
+    let result = confirm("Are you sure to delete this post ?");
+    // confirm to delete the post
+    if (result) {
         event.preventDefault();
-        const id = event.target.getAttribute('data-id');
-        const response = await fetch(`/api/posts/${id}`, {
-            method: 'DELETE',
-        });
+        if (event.target.hasAttribute('data-id')) {
+            event.preventDefault();
+            const id = event.target.getAttribute('data-id');
+            const response = await fetch(`/api/posts/${id}`, {
+                method: 'DELETE',
+            });
 
-        if (response.ok) {
-            document.location.replace('/api/posts');
-        } else {
-            alert('Failed to delete the selected post');
+            if (response.ok) {
+                document.location.replace('/api/posts');
+            } else {
+                alert('Failed to delete the selected post');
+            }
         }
     }
 };
-
 
 // apply addEventListener to each delete button
 function addEventListenerDeleteBtn() {

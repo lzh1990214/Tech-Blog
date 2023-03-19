@@ -1,28 +1,56 @@
-<div class="container mt-3">
-  <div class="card p-3 text-center">
+{{!-- <div class="container mt-3 ">
+  <div class="card p-3 text-center " style="width: 45rem">
 
     <form class="login-form row">
 
       <div class="col-md-12 justify-content-center">
         <div class="inputs">
           <label>Email*</label>
-          <input class="form-control" type="text" id="emailLogin" placeholder="Enter your email*">
+          <input class="form-control" type="text" id="emailLogin" placeholder="Enter your email*" required="required">
         </div>
       </div>
       <div class="col-md-12 justify-content-center">
         <div class="inputs">
           <label>Password*</label>
-          <input class="form-control" type="text" id="passwordLogin" placeholder="Enter your password*">
+          <input class="form-control" type="password" id="passwordLogin" placeholder="Enter your password*"
+            required="required">
         </div>
       </div>
 
       <br><br>
-      <div class="col-md-12 mt-3 gap-2 d-flex justify-content-end row">
+      <div class="col-md-12 mt-3 ">
         <button class="px-3 btn btn-sm btn-primary" type="submit">Login</button>
-        <button class="px-3 btn btn-sm btn-primary" onclick="window.location.href='/';">Cancel</button>
+        <button class="px-3 btn btn-sm btn-outline-primary" onclick="window.location.href='/';">Cancel</button>
       </div>
     </form>
   </div>
-</div>
+</div> --}}
 
-<script src="./js/login.js"></script>
+{{!-- // modifiy --}}
+<div class="container mt-5" style="width: 45rem">
+  <div class="d-flex justify-content-center row">
+    <div class="col-md-10">
+      <div class="row p-2 bg-white">
+        <div class="col-xl-12 mt-1 text-start">
+          <h5 class="signin-title mb-4">Log in to your account</h5>
+
+          <form class="login-form row g-2">
+            <div class="col-sm-12">
+              <label for="email" class="form-label">Email</label>
+              <input type="text" class="form-control" id="emailLogin" required="required">
+            </div>
+            <div class="col-sm-12">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="passwordLogin" required="required">
+            </div>
+
+            <div class="d-grid gap-2 d-md-block mt-4 mb-4">
+              <button class="btn btn-primary mt-2 me-3" type="submit">Submit</button>
+              <button class="btn btn-primary mt-2" type="button" onclick="window.location.href='/';">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

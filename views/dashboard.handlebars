@@ -1,19 +1,20 @@
-<section class="container text-center">
-    <h4 id="welcomeText">My Posts {{userData.first_name}} {{userData.last_name}}</h4>
-    <button class="btn btn-primary px-2" data-bs-toggle="modal" data-bs-target="#newPostModal">New Post</button>
-
+<section class="container">
+    <div class="text-center">
+        <h4 id="welcomeText">My Dashboard</h4>
+        <button class="btn btn-primary px-2" data-bs-toggle="modal" data-bs-target="#newPostModal">New Post</button>
+    </div>
     <section class="container mt-5">
         <div class="d-flex justify-content-center row">
             {{#each posts as |post| }}
             <div class="card mb-3" style="width: 60rem;">
                 <div class="card-body">
-                    {{!-- <a href="/project/{{project.id}}">{{project.name}}</a> --}}
                     <h4 class="card-title">{{post.post_title}}</h4>
                     <!-- Call helper function "format_date" convert the date format -->
                     <h6 class="card-subtitle mb-2 text-muted">Created by {{post.user.first_name}}
                         {{post.user.last_name}} on
                         {{format_date post.date_created}}</h6>
                     <p class="card-text">{{post.post_description}}</p>
+                    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalView-{{post.id}}">View</a>
                     <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-{{post.id}}">Edit</a>
                     <a class="btn btn-primary deleteBtn" data-id="{{post.id}}">Delete</a>
 
@@ -38,15 +39,13 @@
                                 <div class="mb-3">
                                     <label for="postTitle{{post.id}}" class="form-label">Title</label>
                                     <input type="text" class="form-control" id="postTitle{{post.id}}"
-                                        placeholder="{{post.post_title}}">
+                                        placeholder="{{post.post_title}}" required="required">
                                 </div>
                                 <div class="mb-3">
                                     <label for="postDescription{{post.id}}" class="form-label">Description</label>
                                     <textarea class="form-control" id="postDescription{{post.id}}" rows="3"
-                                        placeholder="{{post.post_description}}"></textarea>
+                                        placeholder="{{post.post_description}}" required="required"></textarea>
                                 </div>
-                                {{!-- <button type="submit" class="btn btn-primary"
-                                    onclick="window.location.href='/api/posts';">Submit</button> --}}
                             </form>
                         </div>
                         <div class="modal-footer">
@@ -59,10 +58,50 @@
                 </div>
             </div>
 
+            <!-- View post Modal -->
+            <div class="modal fade" id="modalView-{{post.id}}" tabindex="-1" aria-labelledby="blogpost-{{post.id}}"
+                aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="exampleModalLabel">{{post.post_title}}</h4>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Call helper function "format_date" convert the date format -->
+                            <h6 class="card-subtitle mb-2 text-muted">Created by {{post.user.first_name}}
+                                {{post.user.last_name}} on
+                                {{format_date post.date_created}}</h6>
+                            <p class="card-text">{{post.post_description}}</p>
+                            {{!-- Loop through comments array of each post to extract description and commenter name
+                            --}}
+                            <h6 class="card-subtitle mb-2 text-muted">Comments</h6>
+                            {{#each post.comments as |comment| }}
+                            <p>{{comment.commenter_first}} {{comment.commenter_last}} <span>on {{format_date
+                                    comment.date_created}} wrote:</span></p>
+                            <p>{{comment.comment_description}}</p>
+                            {{/each}}
+
+                            <form class="newCommentForm">
+                                <div class="mb-3">
+                                    <label for="commentBox{{post.id}}" class="form-label">Leave a comment</label>
+                                    <textarea class="form-control" id="commentBox{{post.id}}" rows="3"
+                                        required="required"></textarea>
+                                </div>
+                            </form>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary cmSubmitBtn" data-id="{{post.id}}"
+                                id="cmSubmitBtn{{post.id}}" onclick="window.location.href='/api/posts';">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {{/each}}
         </div>
-
-
 
     </section>
 
@@ -76,23 +115,25 @@
                 </div>
 
                 <div class="modal-body">
-                    <form id="newPostForm">
+                    <form>
                         <div class="mb-3">
                             <label for="newPostTitle" class="form-label">Title</label>
                             <input type="text" class="form-control" id="newPostTitle"
-                                placeholder="Example input placeholder">
+                                placeholder="Example input placeholder" required="required">
                         </div>
                         <div class="mb-3">
                             <label for="newPostDescription" class="form-label">Description</label>
-                            <textarea class="form-control" id="newPostDescription" rows="3"></textarea>
+                            <textarea class="form-control" id="newPostDescription" rows="3"
+                                required="required"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-primary"
-                            onclick="window.location.href='/api/posts';">Submit</button>
+                        {{!-- <button type="submit" class="btn btn-primary"
+                            onclick="window.location.href='/api/posts';">Submit</button> --}}
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    {{!-- <button type="submit" class="btn btn-primary" id="newPostSubmit">Save changes</button> --}}
+                    <button type="button" class="btn btn-primary" id="newPostSubmit"
+                        onclick="window.location.href='/api/posts';">Submit</button>
                 </div>
 
             </div>
@@ -100,11 +141,3 @@
     </div>
 
 </section>
-
-
-{{!--
-<script src="/js/addpost.js"></script> --}}
-
-
-{{!--
-<script src="/js/acceptService.js"></script> --}}

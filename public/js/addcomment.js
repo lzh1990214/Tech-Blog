@@ -23,15 +23,13 @@ const commentFormHandler = async (event) => {
             if (response.ok) {
                 // If successful, redirect the browser to the home page
                 console.log(response);
-                document.location.replace('/');
+                alert('Successfully added a comment !');
             } else {
                 alert(response.statusText);
             }
         }
     };
 }
-
-// document.querySelector('.cmSubmitBtn').addEventListener('click', commentFormHandler);
 
 // apply addEventListener to each submit button
 function addEventListenerSubmitBtn() {
