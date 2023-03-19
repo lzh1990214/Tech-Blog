@@ -6,16 +6,12 @@ const withAuth = require('../../utils/auth');
 
 
 // find all posts of the current user: http://localhost:3001/api/posts
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const postsData = await Posts.findAll({
             where: { author: req.session.user_id },
             include: [{ model: User }],
         });
-
-        // const commentsData = await Comment.findAll({
-        //     where: 
-        // })
 
         const user = await User.findOne({ where: { id: req.session.user_id } });
         const userData = user.get({ plain: true });
@@ -35,23 +31,23 @@ router.get('/', async (req, res) => {
 });
 
 // http://localhost:3001/api/posts/1
-router.get('/:id', async (req, res) => {
-    try {
-        const postData = await Posts.findByPk(req.params.id);
+// router.get('/:id', async (req, res) => {
+//     try {
+//         const postData = await Posts.findByPk(req.params.id);
 
-        if (!postData) {
-            res.status(404).json({ message: 'No post found with this id!' });
-            return;
-        }
+//         if (!postData) {
+//             res.status(404).json({ message: 'No post found with this id!' });
+//             return;
+//         }
 
-        res.status(200).json(postData);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
+//         res.status(200).json(postData);
+//     } catch (err) {
+//         res.status(500).json(err);
+//     }
+// });
 
 // http://localhost:3001/api/posts/addpost
-router.post('/addpost', async (req, res) => {
+router.post('/addpost', withAuth, async (req, res) => {
     try {
         // console.log(req);
         // const user = await User.findOne({ where: { id: req.session.user_id } });
@@ -68,7 +64,7 @@ router.post('/addpost', async (req, res) => {
 });
 
 
-router.put('/:id', async (req, res) => {
+router.put('/:id', withAuth, async (req, res) => {
     try {
         const post = await Posts.update(
             {
@@ -88,9 +84,8 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
-
         const postData = await Posts.destroy({
             where: {
                 id: req.params.id

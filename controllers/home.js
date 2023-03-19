@@ -2,7 +2,7 @@ const router = require('express').Router();
 const User = require('../models/User');
 const Posts = require('../models/Posts');
 const Comments = require('../models/Comments');
-const withAuth = require('../utils/auth');
+// const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
@@ -24,10 +24,18 @@ router.get('/', async (req, res) => {
         // console.log(posts);
         // console.log(posts[0].comments[0]);
         // Pass serialized data and session flag into template
-        res.render('homepage', {
-            posts,
-            logged_in: req.session.logged_in
-        });
+        console.log(req.session.logged_in);
+        const logged_in = req.session.logged_in;
+        if (logged_in) {
+            res.render('homepage', {
+                posts,
+                logged_in
+            });
+        } else {
+            res.render('homepageguest', {
+                posts,
+            });
+        }
     } catch (err) {
         res.status(500).json(err);
     }
