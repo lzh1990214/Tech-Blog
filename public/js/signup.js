@@ -16,9 +16,9 @@ const signupFormHandler = async (event) => {
         console.log(response);
 
         if (response.ok) {
-            alert('Successfully created an account !');
-            console.log("inside if block");
-            // document.location.replace('/');
+            // alert('Successfully created an account !');
+            console.log("inside if block, Successfully created an account !");
+            setTimeout(document.location.replace('/'), 1500);
         } else {
             alert('Failed to create account, please try another email or password');
             console.log("inside else block");
