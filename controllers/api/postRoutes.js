@@ -63,12 +63,15 @@ router.post('/addpost', withAuth, async (req, res) => {
             post_description: req.body.post_description
         });
         console.log(post);
+        res.render('dashboard', {
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         res.status(400).json(err);
     }
 });
 
-
+// update a post
 router.put('/:id', withAuth, async (req, res) => {
     try {
         const post = await Posts.update(
@@ -84,11 +87,15 @@ router.put('/:id', withAuth, async (req, res) => {
             }
         );
         res.status(200).json(post);
+        res.render('dashboard', {
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         res.status(500).json(err);
     }
 });
 
+// delete a post
 router.delete('/:id', withAuth, async (req, res) => {
     try {
         const postData = await Posts.destroy({
@@ -103,6 +110,9 @@ router.delete('/:id', withAuth, async (req, res) => {
         }
 
         res.status(200).json(postData);
+        res.render('dashboard', {
+            logged_in: req.session.logged_in
+        });
     } catch (err) {
         res.status(500).json(err);
     }

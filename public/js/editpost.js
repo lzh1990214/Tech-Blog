@@ -23,6 +23,7 @@ const editPostFormHandler = async (event) => {
 
             if (response.ok) {
                 console.log("updated the post successfully");
+                document.location.replace('/api/posts');
             } else {
                 alert(response.statusText);
             }
