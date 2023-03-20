@@ -16,15 +16,15 @@ router.post('/signup', async (req, res) => {
         // const user = userData.get({ plain: true });
         // console.log(user);
 
-        const userLogin = await User.findOne({ where: { email: req.body.email } });
-        const user = userLogin.get({ plain: true });
-        console.log(user);
+        // const userLogin = await User.findOne({ where: { email: req.body.email } });
+        // const user = userLogin.get({ plain: true });
+        // console.log(user);
 
         req.session.save(() => {
-            req.session.user_id = userLogin.id;
+            req.session.user_id = userData.id;
             req.session.logged_in = true;
 
-            res.status(200).json({ user: userLogin, message: 'You are now logged in!' });
+            res.status(200).json({ user: userData, message: 'You are now logged in!' });
         });
 
         res.render('dashboard', {
