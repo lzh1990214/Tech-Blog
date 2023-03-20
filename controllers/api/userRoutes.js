@@ -12,15 +12,19 @@ router.post('/signup', async (req, res) => {
             password: req.body.password
         });
 
-        const user = userData.get({ plain: true });
+        // res.status(200).json({ user: userData, message: 'Created a new account!' });
+        // const user = userData.get({ plain: true });
+        // console.log(user);
+
+        const userLogin = await User.findOne({ where: { email: req.body.email } });
+        const user = userLogin.get({ plain: true });
         console.log(user);
 
-        // const userLogin = await User.findOne({ where: { email: user.email } });
-
         req.session.save(() => {
-            req.session.user_id = user.id;
-            req.session.logged_in = true
-            // res.status(200).json({ user: userLogin, message: 'You are now logged in!' });
+            req.session.user_id = userLogin.id;
+            req.session.logged_in = true;
+
+            res.status(200).json({ user: userLogin, message: 'You are now logged in!' });
         });
 
         res.render('dashboard', {
