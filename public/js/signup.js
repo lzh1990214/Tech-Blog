@@ -17,7 +17,7 @@ const signupFormHandler = async (event) => {
             // alert('Successfully created an account !');
             document.location.replace('/');
         } else {
-            alert(response.statusText);
+            alert('Failed to create account, please try another email or password');
         }
     }
 };

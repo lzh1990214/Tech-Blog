@@ -27,8 +27,9 @@ const editPostFormHandler = async (event) => {
                 window.location.reload();
             } else {
                 alert(response.statusText);
-                window.location.reload();
-            }
+            };
+
+            window.location.reload();
         }
         else {
             alert("please fill out all required fields")
@@ -54,7 +55,9 @@ const delButtonHandler = async (event) => {
                 document.location.replace('/api/posts');
             } else {
                 alert('Failed to delete the selected post');
-            }
+            };
+
+            window.location.reload();
         }
     }
 };

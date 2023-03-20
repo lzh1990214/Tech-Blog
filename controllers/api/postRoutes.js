@@ -62,10 +62,10 @@ router.post('/addpost', withAuth, async (req, res) => {
             post_title: req.body.post_title,
             post_description: req.body.post_description
         });
-        console.log(post);
-        res.render('dashboard', {
-            logged_in: true
-        });
+        // console.log(post);
+        // res.render('dashboard', {
+        //     logged_in: true
+        // });
     } catch (err) {
         res.status(400).json(err);
     }
@@ -87,9 +87,9 @@ router.put('/:id', withAuth, async (req, res) => {
             }
         );
         res.status(200).json(post);
-        res.render('dashboard', {
-            logged_in: true
-        });
+        // res.render('dashboard', {
+        //     logged_in: true
+        // });
     } catch (err) {
         res.status(500).json(err);
     }
