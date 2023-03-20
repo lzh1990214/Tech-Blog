@@ -12,13 +12,19 @@ const signupFormHandler = async (event) => {
             body: JSON.stringify({ first_name, last_name, email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
+        console.log("after response const");
+        console.log(response);
 
         if (response.ok) {
             // alert('Successfully created an account !');
+            console.log("inside if block");
             document.location.replace('/');
         } else {
             alert('Failed to create account, please try another email or password');
-        }
+            console.log("inside else block");
+        };
+
+
     }
 };
 

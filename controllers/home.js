@@ -4,6 +4,7 @@ const Posts = require('../models/Posts');
 const Comments = require('../models/Comments');
 
 router.get('/', async (req, res) => {
+    console.log("inside / controller");
     try {
         // Get all posts and JOIN with user data
         const postsData = await Posts.findAll({
@@ -18,6 +19,8 @@ router.get('/', async (req, res) => {
                 }
             ],
         });
+        
+        console.log(postsData);
 
         // Serialize data so the template can read it
         const posts = postsData.map((post) => post.get({ plain: true }));

@@ -14,7 +14,7 @@ router.post('/signup', async (req, res) => {
 
         // res.status(200).json({ user: userData, message: 'Created a new account!' });
         // const user = userData.get({ plain: true });
-        // console.log(user);
+        console.log(userData);
 
         // const userLogin = await User.findOne({ where: { email: req.body.email } });
         // const user = userLogin.get({ plain: true });
@@ -26,6 +26,7 @@ router.post('/signup', async (req, res) => {
 
             res.status(200).json({ user: userData, message: 'You are now logged in!' });
         });
+        console.log("after session save");
 
         res.render('dashboard', {
             // ...user,
@@ -33,6 +34,7 @@ router.post('/signup', async (req, res) => {
         });
 
     } catch (err) {
+        console.log("inside signup catch block");
         console.log(err);
         res.status(500).json(err);
     }
