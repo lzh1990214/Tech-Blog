@@ -14,8 +14,8 @@ const signupFormHandler = async (event) => {
         });
 
         if (response.ok) {
-            alert('Successfully created an account !');
-            document.location.replace('/api/posts');
+            // alert('Successfully created an account !');
+            document.location.replace('/');
         } else {
             alert(response.statusText);
         }
