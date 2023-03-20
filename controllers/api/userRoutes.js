@@ -16,24 +16,16 @@ router.post('/signup', async (req, res) => {
         // const user = userData.get({ plain: true });
         console.log(userData);
 
-        // const userLogin = await User.findOne({ where: { email: req.body.email } });
-        // const user = userLogin.get({ plain: true });
-        // console.log(user);
-
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.email = userData.email;
             req.session.logged_in = true;
             res.status(200).json({ user: userData, message: 'You are now logged in!' });
         });
-        console.log("after session save");
-
-        // res.render('dashboard', {
-        //     logged_in: true
-        // });
+        // console.log("after session save");
 
     } catch (err) {
-        console.log("inside signup catch block");
+        // console.log("inside signup catch block");
         console.log(err);
         res.status(500).json(err);
     }
@@ -83,8 +75,6 @@ router.post('/login', async (req, res) => {
 
             res.status(200).json({ user: userData, message: 'You are now logged in!' });
         });
-
-
 
     } catch (err) {
         res.status(400).json(err);

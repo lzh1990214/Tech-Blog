@@ -50,8 +50,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary savePostBtn" data-id="{{post.id}}"
-                                onclick="window.location.href='/api/posts';">Save
+                            <button type="button" class="btn btn-primary savePostBtn" data-id="{{post.id}}">Save
                                 changes</button>
                         </div>
                     </div>
@@ -99,7 +98,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary cmSubmitBtn" data-id="{{post.id}}"
-                                id="cmSubmitBtn{{post.id}}" onclick="window.location.href='/api/posts';">Submit</button>
+                                id="cmSubmitBtn{{post.id}}">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -131,14 +130,11 @@
                             <textarea class="form-control" id="newPostDescription" rows="3"
                                 required="required"></textarea>
                         </div>
-                        {{!-- <button type="submit" class="btn btn-primary"
-                            onclick="window.location.href='/api/posts';">Submit</button> --}}
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="newPostSubmit"
-                        onclick="window.location.href='/api/posts';">Submit</button>
+                    <button type="button" class="btn btn-primary" id="newPostSubmit">Submit</button>
                 </div>
             </div>
         </div>

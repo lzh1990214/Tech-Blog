@@ -15,23 +15,21 @@ const postFormHandler = async (event) => {
             body: JSON.stringify({ post_title, post_description }),
             headers: { 'Content-Type': 'application/json' },
         });
-        
+
         if (response.ok) {
             // If successful, redirect the browser to the dashboard page
             // window.location.replace('/api/posts');
-            window.location.reload();
+            setTimeout(window.location.reload(), 1500);
         } else {
             alert(response.statusText);
             // window.location.reload();
         };
 
-        window.location.reload();
+        // window.location.reload();
     }
     else {
         alert("please fill out all required fields")
     };
-
-
 };
 
 document.querySelector('#newPostSubmit').addEventListener('click', postFormHandler);

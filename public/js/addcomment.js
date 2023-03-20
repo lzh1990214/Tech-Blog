@@ -9,7 +9,6 @@ const commentFormHandler = async (event) => {
         // Collect values from the new comment form
         const comment_description = document.querySelector(`#commentBox${id}`).value.trim();
         const post_id = id;
-
         // console.log(comment_description);
 
         if (post_id && comment_description) {
@@ -24,16 +23,12 @@ const commentFormHandler = async (event) => {
                 // If successful, redirect the browser to the home page
                 // console.log(response);
                 alert('Successfully added a comment !');
-                // window.location.replace('/');
-                window.location.reload();
+                setTimeout(window.location.reload(), 1500);
             } else {
                 alert(response.statusText);
             }
         };
-
-        window.location.reload();
     };
-
 }
 
 // apply addEventListener to each submit button

@@ -22,14 +22,12 @@ const editPostFormHandler = async (event) => {
                 });
 
             if (response.ok) {
-                // console.log("updated the post successfully");
+                console.log("updated the post successfully");
                 // window.location.replace('/api/posts');
-                window.location.reload(true);
+                setTimeout(window.location.reload(), 1500);
             } else {
                 alert(response.statusText);
             };
-
-            window.location.reload(true);
         }
         else {
             alert("please fill out all required fields")
@@ -53,12 +51,13 @@ const delButtonHandler = async (event) => {
 
             if (response.ok) {
                 // document.location.replace('/api/posts');
-                window.location.reload(true);
+                console.log("Deleted the post successfully");
+                setTimeout(window.location.reload(), 1500);
             } else {
                 alert('Failed to delete the selected post');
             };
 
-            window.location.reload(true);
+            // window.location.reload(true);
         }
     }
 };

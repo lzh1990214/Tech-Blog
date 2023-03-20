@@ -12,16 +12,16 @@ const signupFormHandler = async (event) => {
             body: JSON.stringify({ first_name, last_name, email, password }),
             headers: { 'Content-Type': 'application/json' },
         });
-        console.log("after response const");
-        console.log(response);
+        // console.log(response);
 
         if (response.ok) {
-            // alert('Successfully created an account !');
-            console.log("inside if block, Successfully created an account !");
-            setTimeout(document.location.replace('/'), 1500);
+            alert('Successfully created an account !');
+            console.log("Successfully created an account !");
+            // delayed redirect to homepage due to the database connection delay on Heroku.
+            // setTimeout(document.location.replace('/'), 1500);
+            document.location.replace('/');
         } else {
-            alert('Failed to create account, please try another email or password');
-            console.log("inside else block");
+            alert('Failed to create account, please try again !');
         };
 
     }
