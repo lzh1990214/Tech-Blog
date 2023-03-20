@@ -13,12 +13,14 @@ router.post('/signup', async (req, res) => {
         });
 
         const user = userData.get({ plain: true });
-
         console.log(user);
 
+        const userLogin = await User.findOne({ where: { email: req.body.email } });
+
         req.session.save(() => {
-            req.session.user_id = user.id;
+            req.session.user_id = userLogin.id;
             req.session.logged_in = true;
+            res.status(200).json({ user: userLogin, message: 'You are now logged in!' });
         });
 
         // const user = userData.get({ plain: true });

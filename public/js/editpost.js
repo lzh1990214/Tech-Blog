@@ -22,12 +22,12 @@ const editPostFormHandler = async (event) => {
                 });
 
             if (response.ok) {
-                console.log("updated the post successfully");
-                // document.location.replace('/api/posts');
-                document.location.reload();
+                // console.log("updated the post successfully");
+                // window.location.replace('/api/posts');
+                window.location.reload();
             } else {
                 alert(response.statusText);
-                document.location.reload();
+                window.location.reload();
             }
         }
         else {

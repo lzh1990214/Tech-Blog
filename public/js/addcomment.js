@@ -24,11 +24,11 @@ const commentFormHandler = async (event) => {
                 // If successful, redirect the browser to the home page
                 // console.log(response);
                 alert('Successfully added a comment !');
-                document.location.replace('/');
-                document.location.reload();
+                window.location.replace('/');
+                window.location.reload();
             } else {
                 alert(response.statusText);
-                document.location.reload();
+                window.location.reload();
             }
         }
     };
