@@ -18,7 +18,7 @@ const signupFormHandler = async (event) => {
         if (response.ok) {
             // alert('Successfully created an account !');
             console.log("inside if block");
-            document.location.replace('/');
+            // document.location.replace('/');
         } else {
             alert('Failed to create account, please try another email or password');
             console.log("inside else block");
