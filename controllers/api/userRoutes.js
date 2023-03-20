@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const User = require('../../models/User');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 // const withAuth = require('../utils/auth');
 
 router.post('/signup', async (req, res) => {
@@ -22,16 +22,15 @@ router.post('/signup', async (req, res) => {
 
         req.session.save(() => {
             req.session.user_id = userData.id;
+            req.session.email = userData.email;
             req.session.logged_in = true;
-
             res.status(200).json({ user: userData, message: 'You are now logged in!' });
         });
         console.log("after session save");
 
-        res.render('dashboard', {
-            // ...user,
-            logged_in: true
-        });
+        // res.render('dashboard', {
+        //     logged_in: true
+        // });
 
     } catch (err) {
         console.log("inside signup catch block");

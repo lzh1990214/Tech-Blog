@@ -16,14 +16,13 @@ const signupFormHandler = async (event) => {
         console.log(response);
 
         if (response.ok) {
-            // alert('Successfully created an account !');
+            alert('Successfully created an account !');
             console.log("inside if block");
             // document.location.replace('/');
         } else {
             alert('Failed to create account, please try another email or password');
             console.log("inside else block");
         };
-
 
     }
 };
