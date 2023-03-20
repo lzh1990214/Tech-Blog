@@ -27,7 +27,7 @@ router.get('/', withAuth, async (req, res) => {
         res.render('dashboard', {
             posts,
             userData,
-            logged_in: req.session.logged_in
+            logged_in: true
         }
         );
     } catch (err) {
@@ -64,7 +64,7 @@ router.post('/addpost', withAuth, async (req, res) => {
         });
         console.log(post);
         res.render('dashboard', {
-            logged_in: req.session.logged_in
+            logged_in: true
         });
     } catch (err) {
         res.status(400).json(err);
@@ -88,7 +88,7 @@ router.put('/:id', withAuth, async (req, res) => {
         );
         res.status(200).json(post);
         res.render('dashboard', {
-            logged_in: req.session.logged_in
+            logged_in: true
         });
     } catch (err) {
         res.status(500).json(err);
@@ -111,7 +111,7 @@ router.delete('/:id', withAuth, async (req, res) => {
 
         res.status(200).json(postData);
         res.render('dashboard', {
-            logged_in: req.session.logged_in
+            logged_in: true
         });
     } catch (err) {
         res.status(500).json(err);
@@ -135,7 +135,7 @@ router.post('/addcomment', withAuth, async (req, res) => {
         console.log(comment);
         res.render('homepage', {
             comment,
-            logged_in: req.session.logged_in
+            logged_in: true
         });
 
     } catch (err) {
