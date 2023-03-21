@@ -13,7 +13,7 @@
                     <h6 class="card-subtitle mb-2 text-muted fw-light mb-3">Created by {{post.user.first_name}}
                         {{post.user.last_name}} on
                         {{format_date post.date_created}}</h6>
-                    <p class="card-text fw-normal">{{post.post_description}}</p>
+                    <p class="card-text fw-normal">{{post_brief post.post_description}}...</p>
                     <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalView-{{post.id}}">View</a>
                     <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-{{post.id}}">Edit</a>
                     <a class="btn btn-primary deleteBtn" data-id="{{post.id}}">Delete</a>
@@ -43,7 +43,7 @@
                                 <div class="mb-3">
                                     <label for="postDescription{{post.id}}"
                                         class="form-label fw-bold">Description</label>
-                                    <textarea class="form-control" id="postDescription{{post.id}}" rows="3"
+                                    <textarea class="form-control" id="postDescription{{post.id}}" rows="12"
                                         placeholder="{{post.post_description}}" required="required"></textarea>
                                 </div>
                             </form>
@@ -71,7 +71,7 @@
                             <h6 class="card-subtitle mb-2 text-muted fw-light mb-3">Created by {{post.user.first_name}}
                                 {{post.user.last_name}} on
                                 {{format_date post.date_created}}</h6>
-                            <p class="card-text">{{post.post_description}}</p>
+                            <p class="card-text">{{breaklines post.post_description}}</p>
                             {{!-- Loop through comments array of each post to extract description and commenter name
                             --}}
                             <h6 class="card-subtitle mb-2 fw-bold mt-5">Comments</h6>
@@ -81,7 +81,7 @@
                                     <span>on {{format_date
                                         comment.date_created}} wrote:</span>
                                 </p>
-                                <p>{{comment.comment_description}}</p>
+                                <p>{{breaklines comment.comment_description}}</p>
                             </div>
                             {{/each}}
 
@@ -127,7 +127,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="newPostDescription" class="form-label fw-bold">Description</label>
-                            <textarea class="form-control" id="newPostDescription" rows="3"
+                            <textarea class="form-control" id="newPostDescription" rows="12"
                                 required="required"></textarea>
                         </div>
                     </form>
