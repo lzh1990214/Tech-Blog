@@ -16,16 +16,19 @@ const postFormHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' },
         });
 
-        
+
         if (response.ok) {
             event.preventDefault();
             console.log('before create post');
-            alert('Successfully created a new post !');
+            // alert('Successfully created a new post !');
             console.log('after create post');
             // window.location.reload(true);
+            window.location.reload();
+            setTimeout(window.location.reload(), 2000);
         } else {
             alert(response.statusText);
             // window.location.reload(true);
+            window.location.reload();
         };
     }
     else {
