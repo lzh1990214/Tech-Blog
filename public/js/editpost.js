@@ -23,7 +23,7 @@ const editPostFormHandler = async (event) => {
 
             if (response.ok) {
                 event.preventDefault();
-                console.log("updated the post successfully");
+                alert("updated the post successfully");
                 // window.location.replace('/api/posts');
                 window.location.reload();
                 setTimeout(window.location.reload(), 2000);

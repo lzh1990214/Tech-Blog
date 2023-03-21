@@ -5,8 +5,8 @@ const postFormHandler = async (event) => {
     const post_title = document.querySelector('#newPostTitle').value.trim();
     const post_description = document.querySelector('#newPostDescription').value.trim();
 
-    console.log(post_title);
-    console.log(post_description);
+    // console.log(post_title);
+    // console.log(post_description);
 
     if (post_title && post_description) {
         // Send a POST request to the API endpoint
@@ -20,14 +20,16 @@ const postFormHandler = async (event) => {
             event.preventDefault();
             // If successful, redirect the browser to the dashboard page
             // window.location.replace('/api/posts');
+            alert('Successfully created a new post !');
             window.location.reload();
-            setTimeout(window.location.reload(), 2000);
+            setTimeout(window.location.reload(true), 2000);
+            setTimeout(window.location.reload(true), 3000);
         } else {
             alert(response.statusText);
-            // window.location.reload();
+            window.location.reload(true);
         };
 
-        // window.location.reload();
+        setTimeout(window.location.reload(true), 2000);
     }
     else {
         alert("please fill out all required fields")
