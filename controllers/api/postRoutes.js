@@ -56,10 +56,10 @@ router.post('/addpost', withAuth, async (req, res) => {
             postData,
             logged_in: true
         });
-        res.render('/', {
-            postData,
-            logged_in: true
-        });
+        // res.render('/', {
+        //     postData,
+        //     logged_in: true
+        // });
 
     } catch (err) {
         res.status(400).json(err);

@@ -16,6 +16,7 @@ const postFormHandler = async (event) => {
             headers: { 'Content-Type': 'application/json' },
         });
 
+        
         if (response.ok) {
             event.preventDefault();
             console.log('before create post');

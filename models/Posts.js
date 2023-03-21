@@ -29,7 +29,7 @@ Posts.init(
         // },
         post_title: {
             type: DataTypes.STRING,
-            allowNull: true,
+            allowNull: false,
         },
         post_description: {
             type: DataTypes.STRING,
@@ -37,7 +37,7 @@ Posts.init(
         },
         date_created: {
             type: DataTypes.DATE,
-            allowNull: false,
+            allowNull: true,
             defaultValue: DataTypes.NOW,
         }
         // comments_id: {
