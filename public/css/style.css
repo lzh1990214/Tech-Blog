@@ -17,3 +17,45 @@
     background-color: #4a7ea6;
     border-color: #4a7ea6;
 }
+
+@media screen and (max-width: 600px) {
+
+    .navbar-brand {
+        margin: 0;
+    }
+
+    #navContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    #navBarPosition {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+}
+
+/* @media screen and (max-width: 992px) {
+
+    #navContainer {
+        display: flex;
+        justify-content: center;
+    }
+
+    #navBarPosition {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+} */
+
+/* @media screen and (max-width: 1200px) {
+
+    #navBarPosition {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+} */
