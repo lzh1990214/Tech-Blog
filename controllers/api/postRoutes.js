@@ -35,22 +35,6 @@ router.get('/', withAuth, async (req, res) => {
     }
 });
 
-// http://localhost:3001/api/posts/1
-// router.get('/:id', async (req, res) => {
-//     try {
-//         const postData = await Posts.findByPk(req.params.id);
-
-//         if (!postData) {
-//             res.status(404).json({ message: 'No post found with this id!' });
-//             return;
-//         }
-
-//         res.status(200).json(postData);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
-
 // http://localhost:3001/api/posts/addpost
 router.post('/addpost', withAuth, async (req, res) => {
     try {
@@ -66,6 +50,17 @@ router.post('/addpost', withAuth, async (req, res) => {
         // res.render('dashboard', {
         //     logged_in: true
         // });
+
+        const postData = post.get({ plain: true });
+        res.render('dashboard', {
+            postData,
+            logged_in: true
+        });
+        res.render('/', {
+            postData,
+            logged_in: true
+        });
+
     } catch (err) {
         res.status(400).json(err);
     }

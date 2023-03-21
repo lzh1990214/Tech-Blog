@@ -18,18 +18,14 @@ const postFormHandler = async (event) => {
 
         if (response.ok) {
             event.preventDefault();
-            // If successful, redirect the browser to the dashboard page
-            // window.location.replace('/api/posts');
+            console.log('before create post');
             alert('Successfully created a new post !');
-            window.location.reload();
-            setTimeout(window.location.reload(true), 2000);
-            setTimeout(window.location.reload(true), 3000);
+            console.log('after create post');
+            // window.location.reload(true);
         } else {
             alert(response.statusText);
-            window.location.reload(true);
+            // window.location.reload(true);
         };
-
-        setTimeout(window.location.reload(true), 2000);
     }
     else {
         alert("please fill out all required fields")
