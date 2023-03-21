@@ -98,7 +98,7 @@
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" class="btn btn-primary cmSubmitBtn" data-id="{{post.id}}"
-                                id="cmSubmitBtn{{post.id}}">Submit</button>
+                                id="cmSubmitBtn{{post.id}}" onclick="window.location.reload();">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -134,7 +134,8 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" id="newPostSubmit">Submit</button>
+                    <button type="button" class="btn btn-primary" id="newPostSubmit"
+                        onclick="window.location.reload();">Submit</button>
                 </div>
             </div>
         </div>

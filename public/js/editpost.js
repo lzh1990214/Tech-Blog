@@ -24,6 +24,7 @@ const editPostFormHandler = async (event) => {
             if (response.ok) {
                 console.log("updated the post successfully");
                 // window.location.replace('/api/posts');
+                window.location.reload();
                 setTimeout(window.location.reload(), 1500);
             } else {
                 alert(response.statusText);
@@ -52,6 +53,7 @@ const delButtonHandler = async (event) => {
             if (response.ok) {
                 // document.location.replace('/api/posts');
                 console.log("Deleted the post successfully");
+                window.location.reload();
                 setTimeout(window.location.reload(), 1500);
             } else {
                 alert('Failed to delete the selected post');

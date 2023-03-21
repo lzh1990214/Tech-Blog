@@ -1,7 +1,7 @@
 # Tech-blog
 
 ## Description
-The project is to build the back end for an e-commerce site. This back end application can configure a working Express.js API by using Sequelize to interact with a MySQL database.
+This project is to build a full-stack blog website. The users can share technolog blog posts with each other and leave comments on each post. This application allows the logged-in users to experience the full CRUD functionality. Guests can only review posts on the homepage.
 
 
 ## Table of Contents
@@ -82,7 +82,7 @@ https://github.com/lzh1990214/Tech-Blog
 ## Heroku <a id="Heroku"></a>
 
 ### Deployed application
-
+https://tech-blog-lee.herokuapp.com/
 
 ## Screenshots <a id="Screenshots"></a>
 

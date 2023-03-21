@@ -19,6 +19,7 @@ const postFormHandler = async (event) => {
         if (response.ok) {
             // If successful, redirect the browser to the dashboard page
             // window.location.replace('/api/posts');
+            window.location.reload();
             setTimeout(window.location.reload(), 1500);
         } else {
             alert(response.statusText);
