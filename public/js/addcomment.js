@@ -7,7 +7,9 @@ const commentFormHandler = async (event) => {
 
         const id = event.target.getAttribute('data-id');
         // Collect values from the new comment form
-        const comment_description = document.querySelector(`#commentBox${id}`).value.trim();
+        // const comment_description = document.querySelector(`#commentBox${id}`).value.trim();
+        const comment_description = document.querySelector(`#commentBox${id}`).value;
+
         const post_id = id;
         // console.log(comment_description);
 

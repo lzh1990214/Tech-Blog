@@ -3,7 +3,8 @@ const postFormHandler = async (event) => {
 
     // Collect values from the new post form
     const post_title = document.querySelector('#newPostTitle').value.trim();
-    const post_description = document.querySelector('#newPostDescription').value.trim();
+    // const post_description = document.querySelector('#newPostDescription').value.trim();
+    const post_description = document.querySelector('#newPostDescription').value;
 
     // console.log(post_title);
     // console.log(post_description);

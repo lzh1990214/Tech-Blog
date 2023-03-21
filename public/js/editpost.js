@@ -9,7 +9,8 @@ const editPostFormHandler = async (event) => {
 
         // collect values from the corresponding forms based on the specific "data-id" of the selected post
         const post_title = document.querySelector(`#postTitle${id}`).value.trim();
-        const post_description = document.querySelector(`#postDescription${id}`).value.trim();
+        // const post_description = document.querySelector(`#postDescription${id}`).value.trim();
+        const post_description = document.querySelector(`#postDescription${id}`).value;
 
         if (post_title && post_description) {
             event.preventDefault();
