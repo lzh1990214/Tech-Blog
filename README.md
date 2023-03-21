@@ -1,7 +1,7 @@
 # Tech-blog
 
 ## Description
-This project is to build a full-stack blog website. The users can share technolog blog posts with each other and leave comments on each post. This application allows the logged-in users to experience the full CRUD functionality. Guests can only review posts on the homepage.
+This project is a full-stack blog application. Registered users can share technology blog posts with each other and leave comments on each post. This application allows the registered users to experience the full CRUD functionalities. Registered users can create, edit, and delete personal posts on the dashboard after logging in. Also, users can leave comments under other users' posts. However, guests can only view posts on the homepage. 
 
 
 ## Table of Contents
@@ -87,6 +87,20 @@ https://tech-blog-lee.herokuapp.com/
 ## Screenshots <a id="Screenshots"></a>
 
 ### Create schema in MySQL
-<!-- ![schema](./assets/img/1-schema.png) -->
+![schema](./public/assets/schema.png)
 
+### Run local server
+![server](./public/assets/server-local.png)
+
+### Create user table
+![user](./public/assets/table-user.png)
+
+### Create posts table
+![posts](./public/assets/table-posts.png)
+
+### Create comments table
+![comments](./public/assets/table-comments.png)
+
+### Deloyed application
+![deployed](./public/assets/deployed-site.png)
 
