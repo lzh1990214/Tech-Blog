@@ -20,11 +20,12 @@ const commentFormHandler = async (event) => {
             });
 
             if (response.ok) {
+                event.preventDefault();
                 // If successful, redirect the browser to the home page
                 // console.log(response);
                 alert('Successfully added a comment !');
                 window.location.reload();
-                setTimeout(window.location.reload(), 1500);
+                setTimeout(window.location.reload(), 2000);
             } else {
                 alert(response.statusText);
             }

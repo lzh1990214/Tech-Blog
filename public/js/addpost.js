@@ -17,10 +17,11 @@ const postFormHandler = async (event) => {
         });
 
         if (response.ok) {
+            event.preventDefault();
             // If successful, redirect the browser to the dashboard page
             // window.location.replace('/api/posts');
             window.location.reload();
-            setTimeout(window.location.reload(), 1500);
+            setTimeout(window.location.reload(), 2000);
         } else {
             alert(response.statusText);
             // window.location.reload();
